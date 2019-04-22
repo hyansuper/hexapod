@@ -1,0 +1,47 @@
+<launch>    
+    <arg name="model" default="$(find hexapod)/urdf/hexapod.xacro"/>
+    <arg name="i2cpwm_controller_config" default="$(find hexapod)/yaml/i2cpwm_controller_config.yaml"/>
+    <arg name="ns" default="/"/>
+
+    <group ns="$(arg ns)">        
+
+        <param name="vel_cmd_duration" value="1.0"/>
+        <param name="update_rate" value="10.0"/>
+        <param name="pose_rotation_limit" value="0.2"/>
+        <param name="pose_translation_limit" value="0.05"/>
+        <param name="vel_linear_limit" value="0.1"/>
+        <param name="vel_angular_limit" value="0.4"/>
+        <param name="body_height" value="0.2"/>
+
+        <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+
+        <node pkg="hexapod" type="i2cpwm_controller" name="i2cpwm_controller" output="screen">
+            <param name="i2c_dev_file" value="/dev/i2c-1" type="str" />
+            <param name="config_file" value="$(arg i2cpwm_controller_config)" />
+        </node>
+
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+            <rosparam param="source_list">["test_joint_states","ik_joint_states"]</rosparam>
+        </node>
+
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+         <node name="move" type="move" pkg="hexapod" output="screen" >
+            <param name="vel_cmd_duration" value="1.0"/>
+            <param name="update_rate" value="10.0"/>
+            <param name="pose_rotation_limit" value="0.2"/>
+            <param name="pose_translation_limit" value="0.05"/>
+            <param name="vel_linear_limit" value="0.1"/>
+            <param name="vel_angular_limit" value="0.4"/>
+            <param name="gait_period" value="2.0"/>
+            <param name="leg_tip_trajectory_height" value="0.05"/>
+            <param name="leg_tip_default_y" value="0.15"/>
+            <param name="delta_z" value="0.005"/>
+            <param name="z_upper_limit" value="0.25"/>
+            <param name="z_lower_limit" value="0.0"/>
+        </node>
+
+    </group>
+
+</launch>

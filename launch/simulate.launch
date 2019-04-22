@@ -1,0 +1,39 @@
+<launch>
+    <arg name="model" default="$(find hexapod)/urdf/hexapod.xacro"/>
+    <arg name="ns" default="/"/>
+
+    <group ns="$(arg ns)">  
+
+       
+
+        <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+        <node name="rvis" type="rviz" pkg="rviz" args=" -d $(find hexapod)/rviz/config.rviz" required="true" />
+
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+            <rosparam param="source_list">["ik_joint_states"]</rosparam>
+        </node>
+
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+
+        <node name="move" type="move" pkg="hexapod" output="screen" >
+            <param name="vel_cmd_duration" value="1.0"/>
+            <param name="update_rate" value="5.0"/>
+            <param name="pose_rotation_limit" value="0.2"/>
+            <param name="pose_translation_limit" value="0.05"/>
+            <param name="vel_linear_limit" value="0.1"/>
+            <param name="vel_angular_limit" value="0.1"/>
+            <param name="gait_period" value="4.0"/>
+            <param name="leg_tip_trajectory_height" value="0.05"/>
+            <param name="leg_tip_default_y" value="0.15"/>
+            <param name="delta_z" value="0.005"/>
+            <param name="z_upper_limit" value="0.2"/>
+            <param name="z_lower_limit" value="0.0"/>
+        </node>
+
+
+        
+    </group>
+
+</launch>

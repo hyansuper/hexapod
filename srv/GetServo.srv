@@ -1,0 +1,4 @@
+string name
+---
+ServoInfo info
+float64 angle

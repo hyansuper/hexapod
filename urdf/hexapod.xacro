@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<robot name="ant" xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:property name="width" value="0.01" />
+<xacro:macro name="line" params="length " >
+    <visual>
+            <geometry>
+                <box size="${width} ${length} ${width}" />
+            </geometry>
+            <origin xyz="0 ${length/2} 0" rpy="0 0 0" />
+        </visual>
+</xacro:macro>
+
+<!-- leg definition macro -->
+<xacro:macro name="leg" params="name *origin">
+    <joint name="base_to_${name}_L0" type="fixed">
+        <parent link="base_link"/>
+        <child link="${name}_L0"/>
+        <xacro:insert_block name="origin"/>    
+    </joint>
+    <link name="${name}_L0"/>
+    <joint name="${name}_J01" type="revolute">
+        <parent link="${name}_L0"/>
+        <child link="${name}_L1"/>
+        <axis xyz="0 0 1"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <limit lower="${-pi}" upper="${pi}" effort="1000.0" velocity="0.5"/>
+    </joint>
+    <link name="${name}_L1">
+        <xacro:line length="0.054"/>
+    </link>
+
+    <joint name="${name}_J12" type="revolute">
+        <parent link="${name}_L1"/>
+        <child link="${name}_L2"/>
+        <origin xyz="0 0.054 0" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi}" upper="${pi}" effort="1000.0" velocity="0.5"/>
+    </joint>
+    <link name="${name}_L2">
+        <xacro:line length="0.07"/>
+    </link>
+
+    <joint name="${name}_J23" type="revolute">
+        <parent link="${name}_L2"/>
+        <child link="${name}_L3"/>
+        <origin xyz="0 0.07 0" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi}" upper="${pi}" effort="1000.0" velocity="0.5"/>
+    </joint>
+    <link name="${name}_L3">
+        <xacro:line length="0.165" />
+    </link>
+    <joint name="${name}_J34" type="fixed">
+        <parent link="${name}_L3"/>
+        <child link="${name}_L4"/>
+        <origin xyz="0 0.165 0" rpy="0 0 0"/>        
+    </joint>
+    <link name="${name}_L4"/>
+</xacro:macro>
+
+
+
+
+<!-- This link controls the pose of the body(offset and rotation) relative to base_center -->
+<link name="base_link">
+    <visual>
+        <geometry>
+            <box size="0.156 0.156 ${width}"/>
+        </geometry>
+    </visual>
+</link>
+<!-- define 6 legs -->
+<xacro:leg name="leftFrontLeg">
+    <origin xyz="0.078 0.054 0" rpy="0 0 ${-pi/4}" />
+</xacro:leg>
+
+<xacro:leg name="leftMiddleLeg">
+    <origin xyz="0 0.078 0" rpy="0 0 0" />
+</xacro:leg>
+
+<xacro:leg name="leftRareLeg">
+    <origin xyz="-0.078 0.054 0" rpy="0 0 ${pi/4}" />
+</xacro:leg>
+
+<xacro:leg name="rightFrontLeg">
+    <origin xyz="0.078 -0.054 0" rpy="0 0 ${pi+pi/4}" />
+</xacro:leg>
+
+<xacro:leg name="rightMiddleLeg">
+    <origin xyz="0 -0.078 0" rpy="0 0 ${pi}" />
+</xacro:leg>
+
+<xacro:leg name="rightRareLeg">
+    <origin xyz="-0.078 -0.054 0" rpy="0 0 ${pi-pi/4}" />
+</xacro:leg>
+
+<!-- camera on head -->
+<joint name="base_to_cam" type="fixed">
+    <parent link="base_link"/>
+    <child link="cam_link"/>
+    <origin xyz="0.078 0 0" rpy="0 0 0"/>
+</joint>
+<link name="cam_link">
+    <visual>
+            <geometry>
+                <box size="${width} 0.02 0.02" />
+            </geometry>
+            <origin xyz="0 0 0.02" rpy="0 0 0" />
+        </visual>
+</link>
+<!--
+<joint name="base_to_neck_L0" type="revolute">
+    <parent link="base_link"/>
+    <child link="neck_L0"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0.15 0 0" rpy="0 0 0"/>
+    <limit lower="${-pi}" upper="${pi}" effort="1000.0" velocity="0.5"/>
+</joint>
+<link name="neck_L0">
+    <visual>
+            <geometry>
+                <box size="0.05 ${width} ${width}" />
+            </geometry>
+            <origin xyz="0.025 0 0" rpy="0 0 0" />
+        </visual>
+</link>
+<joint name="neck_J01" type="revolute">
+    <parent link="neck_L0"/>
+    <child link="neck_L1"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.05 0 0" rpy="0 0 0"/>
+    <limit lower="${-pi}" upper="${pi}" effort="1000.0" velocity="0.5"/>
+</joint>
+<link name="neck_L1">
+    <visual>
+        <geometry>
+            <box size="0.05 ${width} ${width}" />
+        </geometry>
+        <origin xyz="0.025 0 0" rpy="0 0 0" />
+    </visual>
+</link>
+<joint name="neck_to_head" type="fixed">
+    <parent link="neck_L1"/>
+    <child link="head"/>
+    <origin xyz="0.05 0 0" rpy="0 0 0" />
+</joint>
+<link name="head">
+    <visual>
+        <geometry>
+            <box size="${width} 0.05 0.05" />
+        </geometry>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </visual>
+</link>
+-->
+</robot>

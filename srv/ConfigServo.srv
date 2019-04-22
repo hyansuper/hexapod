@@ -1,0 +1,5 @@
+string name
+ServoInfo info
+---
+bool success
+string extra_info

@@ -1,0 +1,19 @@
+<launch>
+    <arg name="model" default="$(find hexapod)/urdf/hexapod.xacro"/>
+    <arg name="ns" default="/"/>
+    <arg name="gui" default="false"/>
+
+    <group ns="$(arg ns)">        
+
+        <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+            <rosparam param="source_list">["test_joint_states"]</rosparam>
+            <param name="use_gui" value="$(arg gui)"/>
+        </node>
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+        
+    </group>
+
+</launch>
