@@ -210,13 +210,13 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
-#add_executable(i2cpwm_controller
-#  src/i2cpwm_controller.cpp
-#)
-#add_dependencies(i2cpwm_controller ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-#target_link_libraries(i2cpwm_controller yaml-cpp
-#  ${catkin_LIBRARIES}
-#)
+add_executable(i2cpwm_controller
+  src/i2cpwm_controller.cpp
+)
+add_dependencies(i2cpwm_controller ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(i2cpwm_controller yaml-cpp
+  ${catkin_LIBRARIES}
+)
 
 add_executable(move
   src/move.cpp
