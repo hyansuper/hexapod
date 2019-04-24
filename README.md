@@ -1,6 +1,11 @@
 # hexapod
 ROS project for [antdroid](https://antdroid.grigri.cloud/), controlled by RPi 3b and 2 Adafruit servo controller boards.
 
+## Warning:
+* Servos should be put at the right angle in installation, otherwise the legs may conflict each other
+* Upon the first test, it's highly recommended to support the body so that it dosen't apply weight to the legs.
+
+## Software installation:
 Flash the [Ubiquity image with ROS kinetic pre-installed(2019-02-19)](https://downloads.ubiquityrobotics.com/pi.html) to RPi SD card
 
 On PC with Ubuntu:
