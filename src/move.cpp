@@ -5,10 +5,12 @@
 #include <geometry_msgs/Twist.h>
 #include <urdf/model.h>
 #include <actionlib/server/simple_action_server.h>
-#include "hexapod/gait.h"
 #include "hexapod/RiseAction.h"
 #include "hexapod/GetGait.h"
 #include "hexapod/SetGait.h"
+#include "hexapod/gait.h"
+#include "hexapod/gait_manager.h"
+#include "hexapod/default_gaits.h"
 
 using namespace hexapod;
 using hexapod::SetGait;
@@ -151,7 +153,7 @@ int main(int argc, char** argv)
     gm.gaits.insert(std::pair<std::string,Gait*>(std::string("wave"),new WaveGait(gait_period*update_rate,leg_tip_trajectory_height)));
     gm.gaits.insert(std::pair<std::string,Gait*>(std::string("ripple"),new RippleGait(gait_period*update_rate,leg_tip_trajectory_height)));
 
-    gm.gait = gm.gaits["tripod"];
+    gm.gait = gm.gaits["ripple"];
     delete model;
 
     ros::Subscriber pose_cmd_sub = nh.subscribe<geometry_msgs::Pose>("pose_cmd", 1, boost::bind(pose_cmd_sub_cb,_1,boost::ref(gm)));
