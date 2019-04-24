@@ -1,0 +1,129 @@
+pwm_freq: 50
+number_of_boards: 2
+servos:
+  rightFrontLeg_J12:
+    angle_min: -1.57079632679
+    angle_max: 1.57079632679
+    angle_max_pwm: 500
+    angle_min_pwm: 100
+    board: 0
+    channel: 14
+  leftFrontLeg_J01:
+    angle_max: 1.57079632679
+    angle_min: -1.57079632679
+    angle_max_pwm: 115
+    angle_min_pwm: 520
+    board: 1
+    channel: 0
+  leftMiddleLeg_J01:
+    angle_max: 1.57079632679
+    angle_min: -1.57079632679
+    angle_max_pwm: 115
+    angle_min_pwm: 510
+    board: 1
+    channel: 4
+  leftFrontLeg_J12:
+    channel: 1
+    angle_max: 1.57079632679
+    angle_min: -1.57079632679
+    angle_max_pwm: 110
+    board: 1
+    angle_min_pwm: 490
+  leftFrontLeg_J23:
+    channel: 2
+    angle_max: 0
+    angle_min: -3.1415926539
+    angle_max_pwm: 110
+    angle_min_pwm: 480
+    board: 1
+  leftRareLeg_J23:
+    angle_max: 0
+    angle_min: -3.1415926539
+    angle_max_pwm: 95
+    angle_min_pwm: 470
+    board: 1
+    channel: 10
+  rightFrontLeg_J01:
+    angle_min: -1.57079632679
+    angle_max: 1.57079632679
+    angle_max_pwm: 110
+    angle_min_pwm: 510
+    board: 0
+    channel: 15
+  leftRareLeg_J01:
+    angle_max: 1.57079632679
+    angle_min: -1.57079632679
+    angle_max_pwm: 125
+    angle_min_pwm: 500
+    board: 1
+    channel: 8
+  leftRareLeg_J12:
+    channel: 9
+    angle_min: -1.57079632679
+    angle_max: 1.57079632679
+    angle_max_pwm: 95
+    angle_min_pwm: 490
+    board: 1
+  leftMiddleLeg_J12:
+    angle_min: -1.57079632679
+    angle_max: 1.57079632679
+    angle_max_pwm: 115
+    angle_min_pwm: 490
+    board: 1
+    channel: 5
+  leftMiddleLeg_J23:
+    angle_max_pwm: 110
+    angle_min_pwm: 500
+    board: 1
+    channel: 6
+    angle_max: 0
+    angle_min: -3.1415926539
+  rightFrontLeg_J23:
+    angle_max: 0
+    angle_min: -3.14159265359
+    angle_max_pwm: 500
+    angle_min_pwm: 120
+    board: 0
+    channel: 13
+  rightMiddleLeg_J01:
+    angle_min: -1.57079632679
+    angle_max: 1.57079632679
+    angle_max_pwm: 115
+    angle_min_pwm: 525
+    board: 0
+    channel: 11
+  rightMiddleLeg_J12:
+    angle_max: 1.57079632679
+    angle_min: -1.57079632679
+    angle_max_pwm: 515
+    angle_min_pwm: 115
+    board: 0
+    channel: 10
+  rightMiddleLeg_J23:
+    angle_max: 0
+    angle_min: -3.1415926539
+    angle_max_pwm: 495
+    angle_min_pwm: 105
+    board: 0
+    channel: 9
+  rightRareLeg_J01:
+    angle_max: 1.57079632679
+    angle_min: -1.57079632679
+    angle_max_pwm: 90
+    angle_min_pwm: 510
+    board: 0
+    channel: 7
+  rightRareLeg_J12:
+    angle_max: 1.57079632679
+    angle_min: -1.57079632679
+    angle_max_pwm: 505
+    angle_min_pwm: 110
+    board: 0
+    channel: 6
+  rightRareLeg_J23:
+    angle_max: 0
+    angle_min: -3.14159265359
+    angle_max_pwm: 475
+    angle_min_pwm: 100
+    board: 0
+    channel: 4
