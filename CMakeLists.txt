@@ -210,11 +210,11 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
-add_executable(i2cpwm_controller
-  src/i2cpwm_controller.cpp
+add_executable(servo_driver
+  src/servo_driver.cpp
 )
-add_dependencies(i2cpwm_controller ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(i2cpwm_controller yaml-cpp
+add_dependencies(servo_driver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(servo_driver yaml-cpp
   ${catkin_LIBRARIES}
 )
 
@@ -223,5 +223,13 @@ add_executable(move
 )
 add_dependencies(move ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(move
+  ${catkin_LIBRARIES}
+)
+
+add_executable(track_face
+  src/track_face.cpp
+)
+add_dependencies(track_face ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(track_face
   ${catkin_LIBRARIES}
 )
