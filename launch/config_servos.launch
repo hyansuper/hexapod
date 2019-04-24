@@ -1,5 +1,6 @@
 <launch>
     <arg name="model" default="$(find hexapod)/urdf/hexapod.xacro"/>
+    <arg name="servo_config" default="$(find hexapod)/yaml/servo_config.yaml"/>
     <arg name="ns" default="/"/>
     <arg name="gui" default="false"/>
 
@@ -13,6 +14,10 @@
         </node>
         <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
+        <node pkg="hexapod" type="i2cpwm_controller" name="i2cpwm_controller" output="screen">
+            <param name="i2c_dev_file" value="/dev/i2c-1" type="str" />
+            <param name="config_file" value="$(arg servo_config)" />
+        </node>
         
     </group>
 

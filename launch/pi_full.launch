@@ -1,6 +1,6 @@
 <launch>    
     <arg name="model" default="$(find hexapod)/urdf/hexapod.xacro"/>
-    <arg name="i2cpwm_controller_config" default="$(find hexapod)/yaml/i2cpwm_controller_config.yaml"/>
+    <arg name="servo_config" default="$(find hexapod)/yaml/servo_config.yaml"/>
     <arg name="ns" default="/"/>
 
     <group ns="$(arg ns)">        
@@ -18,7 +18,7 @@
 
         <node pkg="hexapod" type="i2cpwm_controller" name="i2cpwm_controller" output="screen">
             <param name="i2c_dev_file" value="/dev/i2c-1" type="str" />
-            <param name="config_file" value="$(arg i2cpwm_controller_config)" />
+            <param name="config_file" value="$(arg servo_config)" />
         </node>
 
         <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
