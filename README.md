@@ -6,5 +6,5 @@ flash the [Ubiquity image with ROS kinetic pre-installed](https://downloads.ubiq
     cd catkin_ws/src
     git clone https://github.com/phil333/face_detection.git
     git clone https://github.com/hyansuper/hexapod.git
-    cd catkin_ws
+    cd ..
     catkin_make
