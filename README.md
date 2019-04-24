@@ -21,7 +21,7 @@ On RPi:
     
 [Setup env variables on both PC and RPi for multiple machine communication in the same local network](http://wiki.ros.org/ROS/Tutorials/MultipleMachines)
 
-then, On PC:
+then, on PC:
 
     roslaunch hexapod pc_maximum.launch
     
