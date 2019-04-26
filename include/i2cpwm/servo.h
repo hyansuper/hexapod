@@ -1,8 +1,8 @@
-#ifndef __SERVO__
-#define __SERVO__
+#ifndef __HEXAPOD_SERVO__
+#define __HEXAPOD_SERVO__
 
 #include "hexapod/ServoInfo.h"
-#include "i2cpwm/I2cpwmManager.h"
+#include "i2cpwm/i2cpwm_manager.h"
 
 using hexapod::ServoInfo;
 using i2cpwm::I2cpwmManager;

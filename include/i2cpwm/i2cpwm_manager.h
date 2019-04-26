@@ -1,5 +1,5 @@
-#ifndef __I2CPWM_MANAGER__
-#define __I2CPWM_MANAGER__
+#ifndef __HEXAPOD_I2CPWM_MANAGER__
+#define __HEXAPOD_I2CPWM_MANAGER__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -52,7 +52,7 @@ class I2cpwmManager{
     int pwm_freq;
     int number_of_boards;
     int controller_io_handle;
-    int active_board ;
+    int active_board;
 
     public:
 
@@ -78,24 +78,28 @@ class I2cpwmManager{
 
         ROS_INFO("Setting PWM frequency to %d Hz", freq);
 
-        nanosleep ((const struct timespec[]){{1, 000000L}}, NULL); 
+        for(int board_count=0;board_count<number_of_boards;board_count++)
+        {
+            set_active_board(board_count);
+            nanosleep ((const struct timespec[]){{1, 000000L}}, NULL);
 
-        oldmode = i2c_smbus_read_byte_data (controller_io_handle, __MODE1);
-        newmode = (oldmode & 0x7F) | 0x10; // sleep
+            oldmode = i2c_smbus_read_byte_data (controller_io_handle, __MODE1);
+            newmode = (oldmode & 0x7F) | 0x10; // sleep
 
-        if (0 > i2c_smbus_write_byte_data (controller_io_handle, __MODE1, newmode)) // go to sleep
-            ROS_ERROR("Unable to set PWM controller to sleep mode"); 
+            if (0 > i2c_smbus_write_byte_data (controller_io_handle, __MODE1, newmode)) // go to sleep
+                ROS_ERROR("Unable to set PWM controller to sleep mode"); 
 
-        if (0 >  i2c_smbus_write_byte_data(controller_io_handle, __PRESCALE, (int)(floor(prescale))))
-            ROS_ERROR("Unable to set PWM controller prescale"); 
+            if (0 >  i2c_smbus_write_byte_data(controller_io_handle, __PRESCALE, (int)(floor(prescale))))
+                ROS_ERROR("Unable to set PWM controller prescale"); 
 
-        if (0 > i2c_smbus_write_byte_data(controller_io_handle, __MODE1, oldmode))
-            ROS_ERROR("Unable to set PWM controller to active mode"); 
+            if (0 > i2c_smbus_write_byte_data(controller_io_handle, __MODE1, oldmode))
+                ROS_ERROR("Unable to set PWM controller to active mode"); 
 
-        nanosleep((const struct timespec[]){{0, 5000000L}}, NULL);   //sleep 5microsec,
+            nanosleep((const struct timespec[]){{0, 5000000L}}, NULL);   //sleep 5microsec,
 
-        if (0 > i2c_smbus_write_byte_data(controller_io_handle, __MODE1, oldmode | 0x80))
-            ROS_ERROR("Unable to restore PWM controller to active mode");
+            if (0 > i2c_smbus_write_byte_data(controller_io_handle, __MODE1, oldmode | 0x80))
+                ROS_ERROR("Unable to restore PWM controller to active mode");
+        }
     }
 
     void set_pwm_interval(int channel,int start,int end)
