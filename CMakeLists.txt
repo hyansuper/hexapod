@@ -226,10 +226,10 @@ target_link_libraries(move
   ${catkin_LIBRARIES}
 )
 
-add_executable(track_face
-  src/track_face.cpp
-)
-add_dependencies(track_face ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(track_face
-  ${catkin_LIBRARIES}
-)
+#add_executable(track_face
+#  src/track_face.cpp
+#)
+#add_dependencies(track_face ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#target_link_libraries(track_face
+#  ${catkin_LIBRARIES}
+#)
