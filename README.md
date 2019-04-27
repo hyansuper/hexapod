@@ -29,7 +29,13 @@ On RPi:
 then, on PC:
 
     roslaunch hexapod pc_maximum.launch
+    optional: roslaunch hexapod track_face.launch
     
 On RPi:
 
     roslaunch hexapod pi_minimum.launch
+    optional: roslaunch hexapod camera.launch
+
+On any terminal:
+
+    rostopic pub --once /rise/goal [tab][tab] ...z: 0.13
