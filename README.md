@@ -29,7 +29,10 @@ On RPi:
 then, on PC:
 
     roslaunch hexapod pc_maximum.launch
-    optional: roslaunch hexapod track_face.launch
+    optional:
+        roslaunch hexapod track_face.launch
+        rosrun rqt_reconfigure rqt_reconfigure, select imageinput:/raspicam_node/camera and publish:publish_data(2)
+    
     
 On RPi:
 
@@ -38,4 +41,6 @@ On RPi:
 
 On any terminal:
 
-    rostopic pub --once /rise/goal [tab][tab] ...z: 0.13
+    rostopic pub --once /rise/goal [tab][tab]
+        ...
+        z: 0.13
