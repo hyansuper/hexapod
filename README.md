@@ -37,7 +37,7 @@ then, on PC:
 On RPi:
 
     roslaunch hexapod pi_minimum.launch
-    optional: roslaunch hexapod camera.launch
+    optional: roslaunch hexapod camerav1_640x480.launch
 
 On any terminal:
 
