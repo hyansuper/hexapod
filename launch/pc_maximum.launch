@@ -17,7 +17,7 @@
         <node name="move" type="move" pkg="hexapod" output="screen" >
             <param name="vel_cmd_duration" value="1.0"/>
             <param name="update_rate" value="18.0"/>
-            <param name="pose_rotation_limit" value="0.2"/>
+            <param name="pose_rotation_limit" value="0.3"/>
             <param name="pose_translation_limit" value="0.05"/>
             <param name="vel_linear_limit" value="0.03"/>
             <param name="vel_angular_limit" value="0.1"/>
