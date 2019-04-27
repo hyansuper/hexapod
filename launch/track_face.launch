@@ -1,0 +1,32 @@
+<launch>
+    <arg name="model" default="$(find hexapod)/urdf/hexapod.xacro"/>
+    <arg name="ns" default="/"/>
+
+    <arg name="face_cascade_name_0"  default="$(find face_detection)/include/face_detection/HaarCascades/haarcascade_frontalface_alt.xml" />
+    <arg name="face_cascade_name_1"  default="$(find face_detection)/include/face_detection//HaarCascades/haarcascade_frontalface_alt2.xml" />
+    <arg name="face_cascade_name_2"  default="$(find face_detection)/include/face_detection//HaarCascades/haarcascade_frontalface_alt_tree.xml" />
+    <arg name="face_cascade_name_3"  default="$(find face_detection)/include/face_detection//HaarCascades/haarcascade_frontalface_default.xml" />
+    <arg name="face_cascade_name_4"  default="$(find face_detection)/include/face_detection/lbpCascades/lbpcascade_frontalface.xml" />
+
+    <group ns="$(arg ns)">  
+
+        <node pkg="hexapod" type="track_face" name="track_face" output="screen">
+            <param name="too_close_area" value="40000"/>
+            <param name="lean_back" value="0.05"/>
+            <param name="rotate_factor" value="0.001"/>
+
+            <param name="tracking_threshold_x" value="50"/>
+            <param name="tracking_threshold_y" value="50"/>
+        </node>
+
+        <node pkg="face_detection" type="face_tracking" name="face_tracking"
+            args="$(arg face_cascade_name_0)
+            $(arg face_cascade_name_1)
+            $(arg face_cascade_name_2)
+            $(arg face_cascade_name_3)
+            $(arg face_cascade_name_4)"
+        />
+        
+    </group>
+
+</launch>
