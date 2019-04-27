@@ -20,10 +20,10 @@
             <param name="pose_rotation_limit" value="0.2"/>
             <param name="pose_translation_limit" value="0.05"/>
             <param name="vel_linear_limit" value="0.03"/>
-            <param name="vel_angular_limit" value="0.05"/>
+            <param name="vel_angular_limit" value="0.1"/>
             <param name="gait_period" value="4.0"/>
             <param name="leg_tip_trajectory_height" value="0.03"/>
-            <param name="leg_tip_default_y" value="0.15"/>
+            <param name="leg_tip_default_y" value="0.1"/>
             <param name="delta_z" value="0.002"/>
             <param name="z_upper_limit" value="0.25"/>
             <param name="z_lower_limit" value="0.0"/>
