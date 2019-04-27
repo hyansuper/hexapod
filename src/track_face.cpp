@@ -18,7 +18,7 @@ double lean_back;
 int faceid;
 ros::Publisher vel_pub, pose_pub;
 int center_x, center_y, off_x, off_y, area;
-bool tracking =false;
+bool tracking = false;
 double rotate_factor;
 int tracking_threshold_x, tracking_threshold_y;
 
@@ -31,7 +31,7 @@ void track(std::vector<int>::const_iterator& it, int index){
 	off_x = center_x-it[2]/2;
 	off_y = center_y-it[3]/2;
 
-	if(off_x > tracking_threshold_x || off_y > tracking_threshold_y || area > too_close_area){
+	if(abs(off_x) > tracking_threshold_x || abs(off_y) > tracking_threshold_y || area > too_close_area){
 		tracking = true;
 	}
 }
