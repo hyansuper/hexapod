@@ -1,5 +1,5 @@
 # hexapod
-ROS project for [antdroid](https://antdroid.grigri.cloud/), controlled by RPi 3b and 2 Adafruit servo controller boards.
+ROS project for [Antdroid](https://antdroid.grigri.cloud/), controlled by RPi 3b and 2 Adafruit servo controller boards.
 
 ## Warning:
 * Servos should be put at the right angle in installation, otherwise the legs may conflict each other
@@ -26,21 +26,44 @@ On RPi:
     
 [Setup env variables on both PC and RPi for multiple machine communication in the same local network](http://wiki.ros.org/ROS/Tutorials/MultipleMachines)
 
-then, on PC:
+## Startup:
+On PC:
 
-    roslaunch hexapod pc_maximum.launch
-    optional:
-        roslaunch hexapod track_face.launch
-        rosrun rqt_reconfigure rqt_reconfigure, select imageinput:/raspicam_node/camera and publish:publish_data(2)
-    
+    roscore &
+    roslaunch hexapod pc_maximum.launch    
     
 On RPi:
 
     roslaunch hexapod pi_minimum.launch
-    optional: roslaunch hexapod camerav1_640x480.launch
-
+    
 On any terminal:
 
+    [stand up:]
     rostopic pub --once /rise/goal [tab][tab]
         ...
         z: 0.13
+    
+    [test:]
+    rosrun hexapod test.py
+    [walk:]
+    rostopic pub -r 3 /vel_cmd [tab][tab]
+        linear:
+        x: 0.04
+        ...
+    [change gait:]
+    rosservice call /set_gait "name: 'wave/tripod/ripple'"
+    
+Face tracking test:<br/>
+
+On RPi:
+
+    roslaunch hexapod camerav1_640x480.launch
+    
+On PC:
+
+    roslaunch hexapod track_face.launch
+    rosrun rqt_reconfigure rqt_reconfigure
+    under 'raspicam_node' tab, check 'hflip'
+    under 'face_tracking' tab, set imageInput: /raspicam_node/image, publish: Publish_Data(2)
+    
+    
