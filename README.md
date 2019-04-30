@@ -38,19 +38,21 @@ On RPi:
     
 On any terminal:
 
-    [stand up:]
+    (stand up:)
     rostopic pub --once /rise/goal [tab][tab]
         ...
         z: 0.13
     
-    [test:]
+    (test:)
     rosrun hexapod test.py
-    [walk:]
+    
+    (walk:)
     rostopic pub -r 3 /vel_cmd [tab][tab]
         linear:
         x: 0.04
         ...
-    [change gait:]
+        
+    (change gait:)
     rosservice call /set_gait "name: 'wave/tripod/ripple'"
     
 Face tracking test:<br/>
@@ -63,7 +65,7 @@ On PC:
 
     roslaunch hexapod track_face.launch
     rosrun rqt_reconfigure rqt_reconfigure
-    under 'raspicam_node' tab, check 'hflip'
-    under 'face_tracking' tab, set imageInput: /raspicam_node/image, publish: Publish_Data(2)
+    (under 'raspicam_node' tab, check 'hflip')
+    (under 'face_tracking' tab, set imageInput: /raspicam_node/image, publish: Publish_Data(2))
     
     
