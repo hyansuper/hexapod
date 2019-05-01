@@ -1,5 +1,7 @@
 # hexapod
-ROS project for [Antdroid](https://antdroid.grigri.cloud/), controlled by RPi 3b and 2 Adafruit servo controller boards.
+ROS project for [Antdroid](https://antdroid.grigri.cloud/), controlled by RPi 3b and 2 Adafruit servo controller boards.<br/>
+The author of Antdroid used a Raspberry Pi together with an Arduino to control the hexpod.<br/>
+I use a Raspberry Pi 3b to communicate through I2C with 2 servo controller boards, without Arduino board. So I wrote my own ROS project.
 
 [Videos](https://www.bilibili.com/video/av50957479/)
 
@@ -26,7 +28,11 @@ On RPi:
     cd ..
     catkin_make
     
-Then, [setup env variables on both PC and RPi for multiple machine communication in the same local network](http://wiki.ros.org/ROS/Tutorials/MultipleMachines)
+## [setup env variables on both PC and RPi for multiple machine communication in the same local network](http://wiki.ros.org/ROS/Tutorials/MultipleMachines)
+
+## Configure the servos:
+... I'll illustrate later ...
+read the src/servo_driver.cpp and yaml/servo_config.yaml file and see if you can figure it out yourself, basically it's using some "rosservice call ..." commands
 
 ## Startup:
 On PC:
