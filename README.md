@@ -1,6 +1,8 @@
 # hexapod
 ROS project for [Antdroid](https://antdroid.grigri.cloud/), controlled by RPi 3b and 2 Adafruit servo controller boards.
 
+[Videos](https://www.bilibili.com/video/av50957479/)
+
 ## Warning:
 * Servos should be put at the right angle in installation, otherwise the legs may conflict each other
 * Upon the first test, it's highly recommended to support the body so that it dosen't apply weight to the legs.
