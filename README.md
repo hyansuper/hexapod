@@ -1,7 +1,7 @@
 # hexapod
 ROS project for [Antdroid](https://antdroid.grigri.cloud/), controlled by RPi 3b and 2 Adafruit servo controller boards.<br/>
 The author of Antdroid used a Raspberry Pi together with an Arduino to control the hexpod.<br/>
-I use a Raspberry Pi 3b to communicate through I2C with 2 servo controller boards, without Arduino board. So I wrote my own ROS project.
+I use a Raspberry Pi 3b to communicate through I2C with 2 servo controller boards, without Arduino board. So I wrote my own ROS project. I implemented 3 walking gaits mentioned in [this article](https://hexyrobot.wordpress.com/2015/11/20/common-walking-gaits-for-hexapods/)
 
 [Videos](https://www.bilibili.com/video/av50957479/)
 
