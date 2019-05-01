@@ -31,7 +31,7 @@ On RPi:
 Then, [setup env variables on both PC and RPi for multiple machine communication in the same local network](http://wiki.ros.org/ROS/Tutorials/MultipleMachines)
 
 ## Configure the servos:
-... I'll illustrate later ...
+... I'll illustrate later ...<br/>
 read the src/servo_driver.cpp and yaml/servo_config.yaml file and see if you can figure it out yourself, basically it's using some "rosservice call ..." commands
 
 ## Startup:
