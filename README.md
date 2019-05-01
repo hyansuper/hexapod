@@ -28,7 +28,7 @@ On RPi:
     cd ..
     catkin_make
     
-## [setup env variables on both PC and RPi for multiple machine communication in the same local network](http://wiki.ros.org/ROS/Tutorials/MultipleMachines)
+Then, [setup env variables on both PC and RPi for multiple machine communication in the same local network](http://wiki.ros.org/ROS/Tutorials/MultipleMachines)
 
 ## Configure the servos:
 ... I'll illustrate later ...
