@@ -23,6 +23,7 @@ On PC with Ubuntu:
 
 On RPi:
 
+    sudo apt-get install libi2c-dev -y
     cd catkin_ws/src
     git clone https://github.com/hyansuper/hexapod.git
     cd ..
